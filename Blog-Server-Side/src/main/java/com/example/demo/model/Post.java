@@ -23,7 +23,7 @@ public class Post {
     private Long id;
     
     @NotBlank
-    @Column(name = "title", length = 50, unique = true)
+    @Column(name = "title", length = 500, unique = true)
     private String title;
     
     @Lob
@@ -36,6 +36,11 @@ public class Post {
     
     @Column(name = "updatedOn")
     private Instant updatedOn;
+
+    @Column(name = "username", length = 500)
+    @NotEmpty
+    private String username;
+
     
 	@NotNull
 	@JoinColumn(name = "user_id")
