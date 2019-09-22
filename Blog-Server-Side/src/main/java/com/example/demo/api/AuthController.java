@@ -22,8 +22,10 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<Boolean> signup(@RequestBody RegisterRequest registerRequest) {
-    	
         return ResponseEntity.ok(authService.signup(registerRequest));
     }
-
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
+    }
 }

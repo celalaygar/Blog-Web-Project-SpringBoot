@@ -15,6 +15,7 @@ import com.example.demo.dto.RegisterRequest;
 import com.example.demo.exception.SpringBlogException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.security.JwtProvider;
 
 @Service
 public class AuthService {
@@ -23,6 +24,10 @@ public class AuthService {
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private JwtProvider jwtProvider;
     
 
     public Boolean signup(RegisterRequest registerRequest) {
@@ -40,6 +45,16 @@ public class AuthService {
 			throw new SpringBlogException("Hay aksi");
 		}
     }
+
+
+	public String login(LoginRequest loginRequest) {
+        Authentication authenticate = authenticationManager.authenticate(
+        		new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+                loginRequest.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
+        String authenticationToken = jwtProvider.generateToken(authenticate);
+        return authenticationToken;
+	}
 
 
 }
