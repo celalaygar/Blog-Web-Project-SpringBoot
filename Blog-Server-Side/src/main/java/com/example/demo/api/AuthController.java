@@ -12,9 +12,11 @@ import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.RegisterRequest;
 import com.example.demo.service.AuthService;
 import com.example.demo.service.AuthenticationResponse;
+import com.example.demo.util.ApiPaths;
+
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping(ApiPaths.AuthCtrl.CTRL)
 public class AuthController {
 	
     @Autowired
