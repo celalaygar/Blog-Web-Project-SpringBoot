@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.exception.SpringBlogException;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -36,5 +37,16 @@ public class JwtProvider {
                 //.signWith(getPrivateKey())
                 .compact();
     }
+    public boolean validateToken(String jwt) {
+        Jwts.parser().setSigningKey(key).parseClaimsJws(jwt);
+        return true;
+    }
 
+	public String  getUsernameFromJWT(String jwt) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(key)
+                .parseClaimsJws(jwt)
+                .getBody();
+        return claims.getSubject();
+	}
 }

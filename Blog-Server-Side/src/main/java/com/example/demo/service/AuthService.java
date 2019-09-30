@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,16 +29,18 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtProvider jwtProvider;
+	@Autowired
+	private ModelMapper modelMapper;
     
 
     public Boolean signup(RegisterRequest registerRequest) {
     	try {
-            User user = new User();
-            user.setUsername(registerRequest.getUsername());
-            user.setEmail(registerRequest.getEmail());
-            user.setFullname(registerRequest.getFullname());
+            User user = modelMapper.map(registerRequest, User.class);
+            //user.setUsername(registerRequest.getUsername());
+            //user.setEmail(registerRequest.getEmail());
+            //user.setFullname(registerRequest.getFullname());
+            //user.setGender(registerRequest.getGender());
             user.setRealPassword(registerRequest.getPassword());
-            user.setGender(registerRequest.getGender());
             user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
             userRepository.save(user);
             return true;
@@ -54,6 +57,13 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authenticate);
         String authenticationToken = jwtProvider.generateToken(authenticate);
         return authenticationToken;
+	}
+
+
+	public Optional<org.springframework.security.core.userdetails.User> getCurrentUser() {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
+                getContext().getAuthentication().getPrincipal();
+        return Optional.of(principal);
 	}
 
 

@@ -42,7 +42,7 @@ public class Post {
     private String username;
 
     
-	@NotNull
+	//@NotNull
 	@JoinColumn(name = "user_id")
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	private User user;
