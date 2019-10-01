@@ -1,38 +1,39 @@
-<hr>
-<div class="container justify-content-center">
-    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
-        <div class="form-group">
-            <label for="inputUsername" class="sr-only">Full name</label>
-            <input type="text" id="inputUsername" [formControlName]="'fullname'" class="form-control"
-                placeholder="Full name" required="" autofocus="">
-        </div>
-        <div class="form-group">
-            <label for="inputUsername" class="sr-only">Username</label>
-            <input type="text" id="inputUsername" [formControlName]="'username'" class="form-control"
-                placeholder="Username" required="" autofocus="">
-        </div>
-        <div class="form-group">
-            <label for="inputEmail" class="sr-only">Email</label>
-            <input type="text" id="inputEmail" [formControlName]="'email'" class="form-control" placeholder="Email"
-                required="" autofocus="">
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" [formControlName]="'password'" class="form-control"
-                placeholder="Password" required="">
-        </div>
-        <div class="form-group">
-            <label for="inputConfirmPassword" class="sr-only">Password</label>
-            <input type="password" id="inputConfirmPassword" [formControlName]="'confirmPassword'" class="form-control"
-                placeholder="Confirm Password" required="">
-        </div>
-        <div class="form-group">
-            <select [formControlName]="'gender'" class="form-control"  placeholder="Gender">
-              <option  [value]="'MALE'">MALE</option>
-              <option  [value]="'FEMALE'">FEMALE</option>
-            </select>
-          </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-    </form>
+<div class="col-sm-6">
+    <div class="container justify-content-center">
+        <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
+            <div class="form-group">
+                <label for="inputUsername" class="sr-only">Full name</label>
+                <input type="text" id="inputUsername" [formControlName]="'fullname'" class="form-control"
+                    placeholder="Full name" required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" [formControlName]="'username'" class="form-control"
+                    placeholder="Username" required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="text" id="inputEmail" [formControlName]="'email'" class="form-control" placeholder="Email"
+                    required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" [formControlName]="'password'" class="form-control"
+                    placeholder="Password" required="">
+            </div>
+            <div class="form-group">
+                <label for="inputConfirmPassword" class="sr-only">Password</label>
+                <input type="password" id="inputConfirmPassword" [formControlName]="'confirmPassword'"
+                    class="form-control" placeholder="Confirm Password" required="">
+            </div>
+            <div class="form-group">
+                <select [formControlName]="'gender'" class="form-control" placeholder="Gender">
+                    <option [value]="'MALE'">MALE</option>
+                    <option [value]="'FEMALE'">FEMALE</option>
+                </select>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
+    </div>
 </div>

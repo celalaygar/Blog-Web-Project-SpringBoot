@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {Router} from '@angular/router';
 import { RegisterPayload } from '../register-payload';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerPayload)
     this.authService.register(this.registerPayload).subscribe(data => {
       console.log('register succes');
-      //this.router.navigateByUrl('/register-success');
+      this.router.navigateByUrl('/register-success');
     }, error => {
       console.log('register failed : ' + error);
     });
