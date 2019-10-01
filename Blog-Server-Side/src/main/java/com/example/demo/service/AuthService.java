@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.RegisterRequest;
@@ -49,14 +50,15 @@ public class AuthService {
 		}
     }
 
+    @Transactional
+	public AuthenticationResponse login(LoginRequest loginRequest) {
 
-	public String login(LoginRequest loginRequest) {
         Authentication authenticate = authenticationManager.authenticate(
         		new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                 loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authenticate);
         String authenticationToken = jwtProvider.generateToken(authenticate);
-        return authenticationToken;
+        return new AuthenticationResponse(authenticationToken, loginRequest.getUsername());
 	}
 
 
