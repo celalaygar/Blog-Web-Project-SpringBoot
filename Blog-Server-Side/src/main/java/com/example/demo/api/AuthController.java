@@ -15,7 +15,6 @@ import com.example.demo.service.AuthService;
 import com.example.demo.service.AuthenticationResponse;
 import com.example.demo.util.ApiPaths;
 
-@CrossOrigin
 @RestController
 @RequestMapping(ApiPaths.AuthCtrl.CTRL)
 public class AuthController {

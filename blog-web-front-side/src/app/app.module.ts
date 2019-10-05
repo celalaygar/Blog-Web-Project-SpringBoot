@@ -8,29 +8,38 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { HomeComponent } from './pages/home/home.component';
+import { AddPostComponent } from './pages/add-post/add-post.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { HttpClientInterceptor } from './security/http-client-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    RegisterSuccessComponent
+    RegisterSuccessComponent,
+    HomeComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    EditorModule ,
     NgxWebstorageModule.forRoot(),
     RouterModule.forRoot([
       {path: 'register', component: RegisterComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'home', component: HomeComponent},
+      {path: 'add-post', component: AddPostComponent},
       {path: 'register-success', component: RegisterSuccessComponent},
     ] ),
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

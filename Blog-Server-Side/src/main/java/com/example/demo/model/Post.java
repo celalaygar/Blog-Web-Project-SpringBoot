@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Type;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +28,8 @@ public class Post {
     @Column(name = "title", length = 500, unique = true)
     private String title;
     
+    
+    @Type(type = "text")
     @Lob
     @Column(name = "content", length = 8000)
     @NotEmpty
@@ -42,7 +46,7 @@ public class Post {
     private String username;
 
     
-	//@NotNull
+	@NotNull
 	@JoinColumn(name = "user_id")
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	private User user;
