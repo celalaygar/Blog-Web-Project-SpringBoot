@@ -2,7 +2,10 @@
     <div class="container">
         <div class="row">
             <nav class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="/home">
+                    <img src="https://cdn.pariyer.com/ACYHRMGblog.png" 
+                        width="30"  height="30" class="d-inline-block align-top" alt="">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -11,7 +14,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/home">Anasayfa <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/home">Anasayfa</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/register">Register</a>
@@ -26,7 +29,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/home">Posts</a>
-                                <a class="dropdown-item" *ngIf='authService.isAuthenticated()' href="/add-post">Add Post</a>
+                                <a class="dropdown-item" *ngIf='authService.isAuthenticated()' href="/add-post">Add
+                                    Post</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>

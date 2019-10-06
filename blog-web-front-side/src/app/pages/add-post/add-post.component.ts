@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { PostPayload } from './post-payload';
 import { Router } from '@angular/router';
 import { PostService } from 'src/app/service/post.service';
@@ -12,16 +12,18 @@ import { PostService } from 'src/app/service/post.service';
 export class AddPostComponent implements OnInit {
   addPostForm: FormGroup;
   postPayload: PostPayload;
-  title = new FormControl('');
-  body = new FormControl('');
   control = false ;
   message = '';
-  constructor(private addpostService: PostService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private addpostService: PostService, private router: Router) { }
 
   ngOnInit() {
-    this.addPostForm = new FormGroup({
-      title: this.title,
-      body: this.body
+
+    this.resetInputs();
+  }
+  resetInputs(){
+    this.addPostForm = this.formBuilder.group({
+      title: '',
+      body: ''
     });
     this.postPayload = {
       id: '',
@@ -29,8 +31,8 @@ export class AddPostComponent implements OnInit {
       title: '',
       username: ''
     };
-    this.control = false;
   }
+
   addPost() {
     this.control = false;
     this.postPayload.content = this.addPostForm.get('body').value;
@@ -39,6 +41,7 @@ export class AddPostComponent implements OnInit {
       console.log('add post is ' + data);
       this.control = true;
       this.message = 'Kayıt işlemi başarılı.';
+      this.resetInputs();
       //this.router.navigateByUrl('/');
     }, error => {
       this.control = true;

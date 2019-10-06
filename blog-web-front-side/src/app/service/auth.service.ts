@@ -29,8 +29,6 @@ export class AuthService {
       // console.log('key : ' + this.localStoraqeService.retrieve('authenticationToken'))
       // console.log('username : ' + this.localStoraqeService.retrieve('username'))
       return true;
-    }, Error => {
-      console.log(Error.message);
     }));
   }
 
