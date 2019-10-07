@@ -29,13 +29,13 @@ public class PostController {
 	}
 
 	// localhost:8182/api/post/all
-	@GetMapping("/all")
+	@GetMapping("/post/all")
 	public ResponseEntity<List<PostDto>> createPost() {
 		return ResponseEntity.ok(postService.getAll());
 	}
 
 	// localhost:8182/api/get/{id}
-	@GetMapping("/get/{id}")
+	@GetMapping("/post/get/{id}")
 	public ResponseEntity<PostDto> createPost(@PathVariable Long id) {
 		return ResponseEntity.ok(postService.getById(id));
 	}

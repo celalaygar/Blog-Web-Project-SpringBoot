@@ -15,6 +15,7 @@ import { AddPostComponent } from './pages/add-post/add-post.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { HttpClientInterceptor } from './security/http-client-interceptor';
 import { PostComponent } from './pages/post/post.component';
+import { AuthGuard } from './guard/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,7 @@ import { PostComponent } from './pages/post/post.component';
       {path: 'post/:id', component: PostComponent},
       {path: 'login', component: LoginComponent},
       {path: 'home', component: HomeComponent},
-      {path: 'add-post', component: AddPostComponent},
+      {path: 'add-post', component: AddPostComponent , canActivate: [AuthGuard]},
       {path: 'register-success', component: RegisterSuccessComponent},
     ] ),
     HttpClientModule

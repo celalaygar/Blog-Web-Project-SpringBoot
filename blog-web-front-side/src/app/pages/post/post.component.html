@@ -1,9 +1,18 @@
 <div class="col-sm-12">
-    <h1 class="blog-title">{{post.title}}</h1>
-    <span>
-      <p>by {{post.username}}</p>
-    </span>
-    <hr>
-    <p [innerHTML]="post.content"></p>
-    <hr>
+    <p class="h5">{{post.title}}</p>
+</div>
+<div class="col-sm-12">
+  <hr>
+  <span style="font-size: 15px;;float: left">
+    <p>by {{post.username}}</p>
+  </span>
+  <span style="font-size: 15px;;float: right">
+    <p>by {{post.createdOn.substring(0,10)}}</p>
+  </span>
+</div>
+<div class="col-sm-12">
+    <br>
+  <br>
+  <p [innerHTML]="post.content"></p>
+  <hr>
 </div>

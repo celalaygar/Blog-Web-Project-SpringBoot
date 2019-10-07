@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
       this.permaLink = params['id'];
     });
 
-    this.postService.getPost(this.permaLink).subscribe((data: PostPayload) => {
+    this.postService.getPost(this.permaLink).subscribe(data => {
       this.post = data;
     }, (err: any) => {
       console.log('Failure Response');

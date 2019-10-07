@@ -16,10 +16,10 @@ export class PostService {
   }
 
   getAllPosts(): Observable<Array<PostPayload>>{
-    return this.httpClient.get<Array<PostPayload>>(this.url + 'all');
+    return this.httpClient.get<Array<PostPayload>>(this.url + 'post/all');
   }
 
   getPost(permaLink: number): Observable<PostPayload>{
-    return this.httpClient.get<PostPayload>(this.url + 'get/' + permaLink);
+    return this.httpClient.get<PostPayload>(this.url + 'post/get/' + permaLink);
   }
 }
